@@ -78,4 +78,87 @@ const isEmailValid = (email) => {
 
 const isPasswordSecure = (password) => {
     
-}
+    const re = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+    return re.test(password);
+};
+
+const isRequired = value => value === '' ? false : true;
+const isBetween = (length, min, max) => length < min || length > max ? false : true;
+
+
+const showError = (input, message) => {
+
+    const formField = input.parentElement;
+
+    formField.classList.remove('success');
+    formField.classList.add('error');
+
+
+    const error = formField.querySelector('small');
+    error.textContent = message;
+};
+
+const showSuccess = (input) => {
+
+    const formField = input.parentElement;
+
+
+    formField.classList.remove('error');
+    formField.classList.add('success');
+
+    const error = formField.querySelector('small');
+    error.textContent = '';
+};
+
+form.addEventListener('submit', function(e){
+
+    e.preventDefault();
+
+
+    let isUsernameValid = checkUsername(),
+        isEmailValid = checkEmail(),
+        isPasswordValid = checkPassword(),
+        isConfirmPasswordValid = checkConfirnPassword();
+
+    let isFormValid = isUsernameValid &&
+        isEmailValid &&
+        isPasswordValid &&
+        isConfirmPasswordValid;
+
+
+    if (isFormValid) {
+
+    }
+});
+
+const debounce = (fn, delay = 1) => {
+    let timeoutId;
+    return (...args) => {
+        
+        if(timeoutId) {
+            clearTimeout(timeoutId);
+        }
+
+        timeoutId = setTimeout(() => {
+            fn.apply(null, args)
+        }, delay);
+    };
+};
+
+form.addEventListener('input', debounce(function (e) {
+    switch (e.target.id) {
+        case 'username':
+            checkUsername();
+            break;
+        case 'email':
+            checkEmail();
+            break;
+        case 'password':
+            checkPassword();
+            break;
+        case 'confirm-password':
+            checkConfirnPassword();
+            break;
+    }
+}));
+
