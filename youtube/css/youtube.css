@@ -34,7 +34,8 @@ header::after {
 .form-group label {
     float: left;
 }
-.form-group .form-control {
+.form-group,
+.form-control {
     float: left;
     border-radius: 5px;
     margin: 5px;
@@ -143,7 +144,7 @@ header::after {
 
 .modal-content, #caption{
     -webkit-animation-name: zoom;
-    -webkit-animation-direction: 0.6s;
+    -webkit-animation-duration: 0.6s;
     animation-name: zoom;
     animation-duration: 0.6s;
 }
