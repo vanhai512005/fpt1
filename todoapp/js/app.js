@@ -43,9 +43,9 @@ let acceptData = () => {
 let createTasks = () => {
     tasks.innerHTML = "";
     data.map((x,y) => {
-        return (tasks.innerHTML +=
-        <div id=${y}>
-           <span class="fw-bold">${x.text}</span>
+        return (tasks.innerHTML += 
+        <div id=${y} > 
+        <span class="fw-bold">${x.text}</span>
            <span class="small text-secondary">${x.date}</span>
            <p>${x.description}</p>
            <span class="options">
@@ -53,7 +53,7 @@ let createTasks = () => {
                <i onClick = "deleteTask(this);createTasks()" class="fas fa-trash-alt"></i>
            </span>
         </div>
-        );
+       );
     });
     resetForm();
 };
